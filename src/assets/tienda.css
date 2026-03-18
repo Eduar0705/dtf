@@ -1,0 +1,285 @@
+/* 
+  Estilos específicos para la página de Tienda 
+*/
+
+/* Hero Tienda */
+.tienda-hero {
+    background: linear-gradient(180deg, #eff6ff 0%, #f8fafc 100%);
+    padding: 80px 0 40px;
+    text-align: center;
+}
+
+.tienda-hero-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tienda-hero-title span {
+    color: var(--primary);
+}
+
+.tienda-hero-desc {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+/* Características (Envío, Calidad, Soporte) */
+.tienda-features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.tienda-feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.tienda-feature-item i {
+    font-size: 1.5rem;
+}
+
+/* Banner Destacados */
+.tienda-section-header {
+    text-align: center;
+    margin: 60px 0 40px;
+}
+
+.tienda-section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.tienda-section-subtitle {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+/* Grid de Productos */
+.tienda-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+@media (min-width: 576px) {
+    .tienda-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .tienda-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Tarjeta de Producto */
+.product-card-store {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.product-card-store:hover {
+    box-shadow: var(--shadow-md);
+    border-color: rgba(139, 92, 246, 0.3);
+    transform: translateY(-4px);
+}
+
+.badge-featured {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #10b981; /* Verde esmeralda */
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+}
+
+.product-card-store .product-image-wrapper {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.product-card-store .product-image-wrapper img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.product-card-store .product-category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.product-card-store .product-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.product-card-store .product-desc {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.product-card-store .product-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+
+.product-card-store .product-stock {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 24px;
+}
+
+.product-card-store .product-stock i {
+    color: #10b981;
+}
+
+.product-card-store .add-to-cart-btn {
+    width: 100%;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.product-card-store .add-to-cart-btn:hover {
+    background: var(--primary-hover);
+}
+
+/* Controles de Tienda en el Header */
+.header-store-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.store-search-bar {
+    display: flex;
+    align-items: center;
+    background: #f1f5f9;
+    border-radius: var(--radius-full);
+    padding: 6px 16px;
+    width: 200px;
+    transition: width 0.3s ease;
+}
+
+.store-search-bar:focus-within {
+    width: 250px;
+    background: #e2e8f0;
+}
+
+.store-search-bar input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 0.9rem;
+    width: 100%;
+    color: var(--text);
+}
+
+.store-search-bar input::placeholder {
+    color: var(--text-light);
+}
+
+.store-search-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.store-cart-btn {
+    position: relative;
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--dark);
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.store-cart-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #ef4444; /* Rojo */
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    border: 2px solid var(--white);
+}
+
+@media (max-width: 768px) {
+    .header-store-controls {
+        display: none; /* Se ocultan en móvil para simplificar, o se podrían poner en el menú móvil */
+    }
+}

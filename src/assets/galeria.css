@@ -1,0 +1,280 @@
+/* 
+  Estilos específicos para la página de Galería
+*/
+
+.galeria-section {
+    background-color: #f8fafc; /* Fondo general claro, similar a la imagen */
+    min-height: calc(100vh - 80px); /* Ocupar casi toda la pantalla */
+    padding-bottom: 120px; /* Espacio para el botón flotante */
+}
+
+/* Título de la galería */
+.galeria-main-title {
+    text-align: center;
+    color: var(--primary); /* Púrpura */
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 48px;
+    letter-spacing: -0.5px;
+}
+
+/* Grid de lienzos */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 32px;
+}
+
+@media (min-width: 640px) {
+    .galeria-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .galeria-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Tarjeta de Lienzo */
+.galeria-card {
+    background: #f1f5f9; /* Gris muy claro para el cuerpo de la tarjeta */
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    border: 2px solid transparent; /* Para evitar saltos al seleccionar */
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.galeria-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.galeria-card.selected {
+    border-color: var(--primary);
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.25);
+}
+
+.galeria-card-check {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: var(--primary);
+    background: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    animation: scaleIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes scaleIn {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+.galeria-card-img-wrapper {
+    height: 380px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    position: relative;
+}
+
+.galeria-card-img-wrapper img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    /* transition opcional si hiciera falta hacer zoom al hover */
+}
+
+/* Base blanca inferior */
+.galeria-card-footer {
+    background: var(--white);
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #e2e8f0;
+    margin-top: auto;
+}
+
+.galeria-card-footer span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Botón flotante Hacer Pedido */
+.galeria-floating-container {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    pointer-events: none; /* Para que el div no bloquee clics detrás de él */
+    z-index: 100;
+    animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes slideUp {
+    0% { transform: translateY(100px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.galeria-checkout-btn {
+    pointer-events: auto; /* Restaurar clics para el botón */
+    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+    color: white;
+    border: none;
+    padding: 16px 48px;
+    border-radius: var(--radius-full);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.galeria-checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(139, 92, 246, 0.5);
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+}
+
+/* Modal de Pedido */
+.galeria-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(71, 85, 105, 0.75); /* Oscuro semitransparente detrás */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.galeria-modal-content {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 650px;
+    padding: 32px 40px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.galeria-modal-close {
+    position: absolute;
+    top: 24px; right: 24px;
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+    color: #64748b;
+    cursor: pointer;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.galeria-modal-close:hover {
+    color: var(--dark);
+}
+
+.galeria-modal-title {
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+/* Formulario interno */
+.galeria-modal-form .form-group {
+    margin-bottom: 20px;
+}
+
+.galeria-modal-form label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--dark);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.galeria-modal-form .form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--white);
+    transition: border-color 0.2s ease;
+}
+
+.galeria-modal-form .form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.galeria-client-switch {
+    display: flex;
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.galeria-client-switch button {
+    flex: 1;
+    padding: 12px;
+    background: var(--white);
+    border: none;
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.galeria-client-switch button.active {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.galeria-modal-form textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.galeria-modal-form .btn-submit {
+    width: 100%;
+    margin-top: 10px;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
